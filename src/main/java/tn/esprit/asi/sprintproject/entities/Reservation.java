@@ -2,6 +2,7 @@ package tn.esprit.asi.sprintproject.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Reservation")
@@ -12,6 +13,12 @@ public class Reservation implements Serializable {
     private Boolean estValide ;
     @Temporal(TemporalType.DATE)//definir le format de date
     private Date dateUniversitaire ;
+
+    @ManyToOne
+    private Chambre chambre;
+
+    @ManyToMany(mappedBy = "reservationSet", cascade = CascadeType. ALL )
+    private List<Etudiant> etudiantSet ;
 
 
 

@@ -3,6 +3,8 @@ package tn.esprit.asi.sprintproject.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Table(name="Chambre")
 public class Chambre implements Serializable {
@@ -12,7 +14,11 @@ public class Chambre implements Serializable {
     private  long  idChambre;
     private long numeroChambre;
 
+    @ManyToOne
+    private Bloc bloc;
 
+  @OneToMany(cascade=CascadeType.ALL, mappedBy= "chambre")
+  private Set<Reservation> reservations;
 
 
     @Enumerated(EnumType.STRING)
