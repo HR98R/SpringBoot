@@ -14,8 +14,7 @@ public class Reservation implements Serializable {
     @Temporal(TemporalType.DATE)//definir le format de date
     private Date dateUniversitaire ;
 
-    @ManyToOne
-    private Chambre chambre;
+
 
     @ManyToMany(mappedBy = "reservationSet", cascade = CascadeType. ALL )
     private List<Etudiant> etudiantSet ;
