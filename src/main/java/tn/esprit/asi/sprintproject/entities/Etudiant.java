@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Etudiant")
@@ -17,6 +18,12 @@ public class Etudiant implements Serializable {
         private  String ecole ;
         @Temporal(TemporalType.DATE)//definir le format de date
         private Date dateNaissance ;
+
+        @ManyToMany(cascade = CascadeType. ALL )
+        private List<Reservation> reservationSet ;
+
+
+
 
         public Long getIdEtudiant() {
                 return idEtudiant;

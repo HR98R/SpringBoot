@@ -3,6 +3,8 @@ package tn.esprit.asi.sprintproject.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name="Bloc")
 public class Bloc implements Serializable {
@@ -12,6 +14,18 @@ public class Bloc implements Serializable {
     private Long idBloc;
     private String nomBloc ;
     private Long capaciteBloc ;
+
+
+
+
+    @ManyToOne
+    private Foyer foyer;
+
+    @OneToMany(cascade= CascadeType. ALL , mappedBy= "bloc")
+    private List<Chambre> chambre;
+
+
+
 
     public Long getIdBloc() {
         return idBloc;
